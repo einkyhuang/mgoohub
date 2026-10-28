@@ -1,0 +1,6 @@
+{
+  "name": "mgoo-sales-operator",
+  "version": "1.0.0",
+  "description": "Route SaleSmartly customer messages to bounded sales and service workflows.",
+  "skills": "./skills/"
+}
