@@ -28,6 +28,7 @@ import {
   Gauge,
   Headphones,
   Inbox,
+  KeyRound,
   LayoutDashboard,
   Moon,
   MoreHorizontal,
@@ -73,6 +74,7 @@ import { NightWatchdogView } from "@/components/NightWatchdogView";
 import { EccangAnalyticsView } from "@/components/EccangAnalyticsView";
 import { AiWorkforceView } from "@/components/AiWorkforceView";
 import { GuideCenterView } from "@/components/GuideCenterView";
+import { SettingsView } from "@/components/SettingsView";
 
 type View =
   | "overview"
@@ -153,7 +155,7 @@ const navGroups: NavGroup[] = [
       { id: "agents", label: "智能体中心", icon: Bot },
       { id: "rules", label: "自动回复规则", icon: Workflow },
       { id: "audit", label: "审计记录", icon: FileText },
-      { id: "settings", label: "接入设置", icon: Settings2 },
+      { id: "settings", label: "系统设置与 API 密钥", icon: KeyRound, badge: "配置" },
     ],
   },
 ];
@@ -171,7 +173,7 @@ const headings: Record<View, { eyebrow: string; title: string; copy: string }> =
   agents: { eyebrow: "Codex Skills", title: "智能体中心", copy: "每条入站消息先路由到专业 Skill，再经过安全门生成草稿或回复。" },
   rules: { eyebrow: "安全自动化", title: "自动回复规则", copy: "默认生成草稿；只有通过审核的规则才允许自动发送。" },
   audit: { eyebrow: "可追溯", title: "操作与发送记录", copy: "记录同步、规则命中、草稿与人工发送结果。" },
-  settings: { eyebrow: "SaleSmartly", title: "接入设置", copy: "核对套餐、密钥、Webhook 与发送模式。" },
+  settings: { eyebrow: "API 密钥与配置", title: "系统设置 & 接口密钥中枢", copy: "在此直接填入 DeepSeek、OpenAI、SaleSmartly 与易仓 ERP 的 API 密钥并测试连通性。" },
 };
 
 function ChannelMark({ channel, size = "md" }: { channel: number; size?: "sm" | "md" | "lg" }) {
@@ -1583,17 +1585,6 @@ function AuditView({ providedEvents }: { providedEvents: AuditEvent[] }) {
 
 const AGENT_BACKEND_LABEL: Record<string, string> = { "codex-gateway": "Codex 本地网关", "openai-agents": "OpenAI Agents API", "local-rules": "本地规则（降级）" };
 
-function SettingsView({ connected, agentConnected, agentBackend, agentModel }: { connected: boolean; agentConnected: boolean; agentBackend: string; agentModel: string }) {
-  const items = [
-    { label: "Salesmartly Max 套餐", value: connected ? "已确认" : "待确认", ok: connected },
-    { label: "Project ID", value: connected ? "已安全配置" : "待配置", ok: connected },
-    { label: "API Token", value: connected ? "已安全配置" : "待配置", ok: connected },
-    { label: "Webhook Secret", value: connected ? "已安全配置" : "待配置", ok: connected },
-    { label: "Codex 智能体内核", value: agentConnected ? `${AGENT_BACKEND_LABEL[agentBackend] ?? agentBackend} · ${agentModel}` : "待配置", ok: agentConnected },
-  ];
-  return <div className="grid gap-5 xl:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)]"><section className="panel"><div className="flex items-start justify-between gap-4"><div><p className="panel-kicker">连接状态</p><h3 className="mt-2 text-lg font-semibold">{connected && agentConnected ? "真实数据与 Codex 已接入" : "当前使用安全演示数据"}</h3><p className="mt-2 text-sm leading-6 text-slate-500">密钥只应保存在服务端运行环境，不能写进浏览器、项目文件或聊天消息。</p></div><span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${connected && agentConnected ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"}`}>{connected && agentConnected ? <ShieldCheck className="h-6 w-6"/> : <Gauge className="h-6 w-6"/>}</span></div><div className="mt-6 divide-y divide-slate-100 rounded-2xl border border-slate-100">{items.map((item) => <div key={item.label} className="flex items-center justify-between gap-4 p-4"><div className="flex items-center gap-3"><span className={`grid h-7 w-7 place-items-center rounded-full ${item.ok ? "bg-emerald-50 text-emerald-600" : "bg-slate-100 text-slate-400"}`}>{item.ok ? <Check className="h-4 w-4"/> : <span className="text-[10px] font-bold">—</span>}</span><span className="text-sm font-medium text-slate-700">{item.label}</span></div><span className="text-xs text-slate-400">{item.value}</span></div>)}</div></section><aside className="space-y-5"><div className="panel"><p className="panel-kicker">自定义 AI 成员接收地址</p><div className="mt-3 break-all rounded-2xl bg-slate-950 p-4 font-mono text-[11px] leading-5 text-emerald-200">https://你的站点/api/salesmartly/webhook</div><p className="mt-3 text-xs leading-5 text-slate-500">在 SaleSmartly 新建自定义 AI 成员并使用此地址；开启会话自动分配，关闭“机器人优先接待”。</p></div><div className="panel"><p className="panel-kicker">运行变量</p><div className="mt-4 space-y-2 font-mono text-[11px] text-slate-600"><p>SALESMARTLY_PROJECT_ID</p><p>SALESMARTLY_API_TOKEN</p><p>SALESMARTLY_WEBHOOK_SECRET</p><p>SALESMARTLY_WEBHOOK_TOKEN</p><p>OPENAI_API_KEY</p><p>OPENAI_AGENT_MODEL=gpt-6-astra</p><p>SALESMARTLY_REPLY_MODE=draft</p></div></div></aside></div>;
-}
-
 export default function Home() {
   const [view, setView] = useState<View>("overview");
   const [connected, setConnected] = useState(false);
@@ -1823,14 +1814,7 @@ export default function Home() {
             {view === "agents" && <AgentsView configured={agentConnected} providedRuns={agentRuns} />}
             {view === "rules" && <RulesView />}
             {view === "audit" && <AuditView providedEvents={auditEvents} />}
-            {view === "settings" && (
-              <SettingsView
-                connected={connected}
-                agentConnected={agentConnected}
-                agentBackend={agentBackend}
-                agentModel={agentModel}
-              />
-            )}
+            {view === "settings" && <SettingsView />}
           </main>
         </SidebarInset>
       </div>

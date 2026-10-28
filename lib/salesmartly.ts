@@ -20,6 +20,18 @@ export interface SaleSmartlyConfig {
   apiBase?: string;
 }
 
+// In-memory overrides updated dynamically from Web Settings UI
+const inMemoryEnvOverrides: Record<string, string> = {};
+
+export function setRuntimeEnvOverrides(overrides: Record<string, string>): void {
+  for (const [k, v] of Object.entries(overrides)) {
+    inMemoryEnvOverrides[k] = v;
+    if (typeof process !== "undefined" && process.env) {
+      process.env[k] = v;
+    }
+  }
+}
+
 /**
  * Safely resolves environment variables across Cloudflare Workers and Node/Next.js runtimes.
  */
@@ -39,6 +51,9 @@ export function runtimeEnv(): Record<string, string | undefined> {
   } catch {
     // env not available in pure node context
   }
+
+  // 3. Dynamic UI settings overrides take highest priority
+  Object.assign(result, inMemoryEnvOverrides);
 
   return result;
 }
