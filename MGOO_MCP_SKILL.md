@@ -29,7 +29,8 @@
 | 工具名称 | 功能描述 | 核心参数 |
 | :--- | :--- | :--- |
 | `run_ai_employee` | 调度 MGOO 8 大外贸数字员工（市场情报、ICP评分、深度背调、采购信号、决策链挖掘、开发信助理、夜间助攻、实战教练） | `employee_id` (员工标识), `target_brand_or_niche` (分析对象/买家网址/消息), `extra_notes` (可选附加说明) |
-| `get_eccang_overview` | 实时读取易仓 ERP 2C 销售中台数据（今日/月度 GMV、TikTok/Shopify/Amazon 分布、热销爆款、库存预警与 2B 协同话术） | 无参数 `{}` |
+| `get_eccang_overview` | 实时读取易仓 ERP 2C 销售中台数据（今日/月度 GMV、TikTok/Shopify/Amazon 分布、热销爆款、库存预警与 2B 协同话术）。虚拟数据已清空，待接入时返回就绪状态 | 无参数 `{}` |
+| `sync_eccang_overview` | 向 MGOO 工作台推送/写入真实的易仓 ERP 2C 销售与库存数据（供 AI 脚本或自动化 Webhook 定时调用） | `today_gmv_usd`, `month_gmv_usd`, `month_orders_count`, `avg_order_value_usd`, `platform_distribution`, `top_skus`, `inventory_alerts` |
 | `get_night_watchdog_report` | 读取 24H 夜间守候配置（19:00-09:00 / 3分钟超时）与自动生成的《晨间销售交接清单》 | 无参数 `{}` |
 | `send_whatsapp_message` | 自动投递或暂存 WhatsApp 营销消息（支持直接 API 发送或生成草稿留痕人工把关） | `chat_user_id` (买家账号/手机号), `message` (消息正文), `auto_send` (可选 boolean，默认 false 安全暂存) |
 | `run_sales_roleplay` | 与高仿欧美买家（Marcus Vance 街潮、Chloe Evans 瑜伽馆、David Miller 澳洲严苛采购）进行实战对练并打分 | `persona_id` (买家标识), `rep_message` (业务员回复话术) |
@@ -97,12 +98,17 @@ curl -s -X POST http://localhost:5173/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
 
-# 2. 验证调用易仓 2C 数据工具
+# 2. 验证调用易仓 2C 数据工具 (读取当前中台数据，未配置时返回待接入就绪状态)
 curl -s -X POST http://localhost:5173/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"get_eccang_overview","arguments":{}}}'
 
-# 3. 验证调用 8 大 AI 员工 (如 ICP 客户筛选员)
+# 3. 验证通过 REST API 推送真实易仓数据到工作台
+curl -s -X POST http://localhost:5173/api/eccang/analytics \
+  -H "Content-Type: application/json" \
+  -d '{"todayGmvUsd":12500,"monthGmvUsd":320000,"monthOrdersCount":5400,"avgOrderValueUsd":59.2,"grossMarginPct":52,"returnRatePct":4.5,"platformDistribution":[{"platform":"TikTok Shop","gmvShare":50,"gmvAmountUsd":160000,"orderCount":2700,"color":"#000"}],"topSkus":[],"inventoryAlerts":[]}'
+
+# 4. 验证调用 8 大 AI 员工 (如 ICP 客户筛选员)
 curl -s -X POST http://localhost:5173/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"run_ai_employee","arguments":{"employee_id":"icp-scorer","target_brand_or_niche":"Kith 风格初创街潮品牌，咨询 50 件卫衣"}}}'

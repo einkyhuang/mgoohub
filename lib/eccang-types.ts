@@ -6,6 +6,35 @@ export interface EccangConfig {
   configured: boolean;
 }
 
+export interface EccangPlatformDistribution {
+  platform: string;
+  gmvShare: number; // percentage e.g. 42%
+  gmvAmountUsd: number;
+  orderCount: number;
+  color: string;
+}
+
+export interface EccangTopSku {
+  sku: string;
+  name: string;
+  category: "Streetwear" | "Activewear" | "Basics" | string;
+  monthlySalesUnits: number;
+  inventoryLevel: number;
+  safetyStock: number;
+  status: "healthy" | "low_stock" | "hot_reorder";
+  revenueUsd: number;
+  growthPct: number;
+  b2bSynergyTip: string; // How sales reps can use this 2C winner to sell 2B blanks
+}
+
+export interface EccangInventoryAlert {
+  warehouse: string;
+  sku: string;
+  remainingDays: number;
+  actionRequired: string;
+  urgency: "urgent" | "warning" | "normal";
+}
+
 export interface EccangSalesOverview {
   todayGmvUsd: number;
   monthGmvUsd: number;
@@ -13,30 +42,9 @@ export interface EccangSalesOverview {
   avgOrderValueUsd: number;
   grossMarginPct: number;
   returnRatePct: number;
-  platformDistribution: {
-    platform: string;
-    gmvShare: number; // percentage e.g. 42%
-    gmvAmountUsd: number;
-    orderCount: number;
-    color: string;
-  }[];
-  topSkus: {
-    sku: string;
-    name: string;
-    category: "Streetwear" | "Activewear" | "Basics";
-    monthlySalesUnits: number;
-    inventoryLevel: number;
-    safetyStock: number;
-    status: "healthy" | "low_stock" | "hot_reorder";
-    revenueUsd: number;
-    growthPct: number;
-    b2bSynergyTip: string; // How sales reps can use this 2C winner to sell 2B blanks
-  }[];
-  inventoryAlerts: {
-    warehouse: string;
-    sku: string;
-    remainingDays: number;
-    actionRequired: string;
-    urgency: "urgent" | "warning" | "normal";
-  }[];
+  platformDistribution: EccangPlatformDistribution[];
+  topSkus: EccangTopSku[];
+  inventoryAlerts: EccangInventoryAlert[];
+  lastSyncAt?: string;
+  dataSource?: "live_api" | "webhook_push" | "sample_test";
 }

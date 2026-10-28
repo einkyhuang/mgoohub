@@ -340,13 +340,19 @@ curl -s -X POST http://localhost:5173/mcp \\
         {activeTab === "eccang" && (
           <div className="space-y-4 text-xs text-slate-700 leading-relaxed">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <h5 className="font-bold text-slate-900 text-sm">🔥 为什么用 2C 动销数据可以降维打击 2B 批发客户？</h5>
+              <h5 className="font-bold text-slate-900 text-sm">🔥 易仓 ERP 2C 数据中台对接（虚拟数据已清空，接口与 Skill 已预留）</h5>
               <p className="text-slate-600">
-                海外初创服装品牌主理人最大的心病是：<strong>“如果我定了 50 件或 100 件，卖不掉怎么办？”</strong><br />
-                通过调用 <code className="font-mono text-sky-800">get_eccang_overview</code>，业务员可以拿出实打实的硬数据背书：<br />
-                &bull; <em>“Marcus，这款 400gsm 做旧连帽卫衣目前在美区 TikTok Shop 月销 1,840 件，好评率 98.4%，退货率仅 2.1%。”</em><br />
-                &bull; <em>“我们国内总仓长期备有数吨现胚，首批支持 30-50 件做旧发泡印花，您不用承担任何版型开荒风险。”</em><br />
-                这种<strong>有数据背书的 2B 批发推销</strong>比任何口头承诺都更能促成即时打样！
+                系统现已清空演示用的虚拟销售数据，预留了标准化的数据接收端点与 MCP 工具，方便直接交给 <b>Codex</b> 或 <b>WorkBuddy</b> 编写自动化拉取脚本：<br />
+                &bull; <strong>本地接收接口</strong>：<code className="font-mono text-sky-800">POST http://localhost:5173/api/eccang/analytics</code> 或 <code className="font-mono text-sky-800">POST /api/eccang/sync</code><br />
+                &bull; <strong>MCP 工具</strong>：<code className="font-mono text-sky-800">get_eccang_overview</code>（读取）与 <code className="font-mono text-sky-800">sync_eccang_overview</code>（写入/更新）<br />
+                &bull; <strong>2B/2C 业务协同价值</strong>：当海外初创品牌主理人在 WhatsApp 犹豫下单时，业务员通过调取 2C 真实爆款动销与现胚库存，用硬数据消除客户疑虑，促成 30-50 件首单定制！
+              </p>
+            </div>
+            <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200/80 space-y-2">
+              <h5 className="font-bold text-sky-950 text-sm">🤖 一键把对接任务交给 AI 员工</h5>
+              <p className="text-sky-900/80">
+                您可以直接对 Codex 或 WorkBuddy 发送指令：<br />
+                <em>“请帮我对接易仓 ERP 开放平台接口，将每日 2C 订单、GMV 和热销款式定时推送到 http://localhost:5173/api/eccang/analytics”</em>
               </p>
             </div>
           </div>

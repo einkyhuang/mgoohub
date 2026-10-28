@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { env } from "cloudflare:workers";
 import { runAIEmployeeTask } from "@/lib/ai-workforce";
-import { fetchEccangAnalytics } from "@/lib/eccang";
+import { fetchEccangAnalytics, getEccangConfig, updateEccangAnalytics } from "@/lib/eccang";
 import { DEFAULT_WATCHDOG_CONFIG, generateMorningReport } from "@/lib/night-watchdog";
 import { BUYER_PERSONAS, runBuyerTurn, evaluateRoleplaySession } from "@/lib/sales-training";
 import { sendReply } from "@/lib/salesmartly";
@@ -43,9 +43,43 @@ const tools = [
   {
     name: "get_eccang_overview",
     description:
-      "Read ECCANG ERP 2C sales metrics, GMV by platform (TikTok Shop, Shopify, Amazon), top-selling SKUs, inventory alerts, and 2B/2C sales synergy recommendations for sales reps.",
+      "Read ECCANG ERP 2C sales metrics, GMV by platform (TikTok Shop, Shopify, Amazon), top-selling SKUs, inventory alerts, and 2B/2C sales synergy recommendations for sales reps. Returns connection status if not yet configured.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     annotations: { readOnlyHint: true },
+  },
+  {
+    name: "sync_eccang_overview",
+    description:
+      "Push or update real ECCANG ERP 2C sales metrics, platform GMV shares, top SKUs, and inventory alerts into MGOO Workbench.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        today_gmv_usd: { type: "number", description: "Today's GMV in USD" },
+        month_gmv_usd: { type: "number", description: "Current month's GMV in USD" },
+        month_orders_count: { type: "number", description: "Total orders this month" },
+        avg_order_value_usd: { type: "number", description: "Average Order Value in USD" },
+        gross_margin_pct: { type: "number", description: "Gross margin percentage (e.g. 54.2)" },
+        return_rate_pct: { type: "number", description: "Return rate percentage (e.g. 4.8)" },
+        platform_distribution: {
+          type: "array",
+          description: "List of platform sales shares (platform, gmvShare, gmvAmountUsd, orderCount, color)",
+          items: { type: "object" },
+        },
+        top_skus: {
+          type: "array",
+          description: "List of top selling SKUs (sku, name, category, monthlySalesUnits, inventoryLevel, safetyStock, status, revenueUsd, growthPct, b2bSynergyTip)",
+          items: { type: "object" },
+        },
+        inventory_alerts: {
+          type: "array",
+          description: "List of inventory alerts (warehouse, sku, remainingDays, actionRequired, urgency)",
+          items: { type: "object" },
+        },
+      },
+      required: ["today_gmv_usd", "month_gmv_usd"],
+      additionalProperties: true,
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false },
   },
   {
     name: "get_night_watchdog_report",
@@ -200,7 +234,52 @@ export async function POST(request: NextRequest) {
     // 2. ECCANG ERP Overview
     if (name === "get_eccang_overview") {
       const analytics = await fetchEccangAnalytics();
+      if (!analytics) {
+        const config = getEccangConfig();
+        return rpc(
+          body.id,
+          toolResult({
+            status: "pending_configuration",
+            connected: false,
+            message:
+              "易仓 ERP 暂未配置 API 凭证或未推送数据（虚拟测试数据已全部清空）。你可以使用 MCP 工具 sync_eccang_overview 或通过 POST /api/eccang/analytics 推送真实数据。",
+            apiEndpoint: "http://localhost:5173/api/eccang/analytics",
+            syncEndpoint: "http://localhost:5173/api/eccang/sync",
+            config: {
+              appKeyConfigured: Boolean(config.appKey),
+              serviceUrl: config.serviceUrl,
+              configured: config.configured,
+            },
+            data: null,
+          }),
+        );
+      }
       return rpc(body.id, toolResult(analytics));
+    }
+
+    // 2.1 Sync ECCANG ERP Overview (For AI agent or webhook push)
+    if (name === "sync_eccang_overview") {
+      const updated = updateEccangAnalytics({
+        todayGmvUsd: Number(args.today_gmv_usd || 0),
+        monthGmvUsd: Number(args.month_gmv_usd || 0),
+        monthOrdersCount: Number(args.month_orders_count || 0),
+        avgOrderValueUsd: Number(args.avg_order_value_usd || 0),
+        grossMarginPct: Number(args.gross_margin_pct || 0),
+        returnRatePct: Number(args.return_rate_pct || 0),
+        platformDistribution: (args.platform_distribution as any) || [],
+        topSkus: (args.top_skus as any) || [],
+        inventoryAlerts: (args.inventory_alerts as any) || [],
+        dataSource: "webhook_push",
+      });
+      return rpc(
+        body.id,
+        toolResult({
+          success: true,
+          message: "易仓经营数据已成功同步并写入 MGOO 全域工作台！",
+          syncedAt: updated.lastSyncAt,
+          data: updated,
+        }),
+      );
     }
 
     // 3. Night Watchdog Report

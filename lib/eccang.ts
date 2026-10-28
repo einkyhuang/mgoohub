@@ -1,6 +1,10 @@
+import { createHash } from "node:crypto";
 import { runtimeEnv } from "./salesmartly";
 export * from "./eccang-types";
 import { EccangConfig, EccangSalesOverview } from "./eccang-types";
+
+// In-memory data store for ECCANG ERP analytics (synced from API, AI agent, or webhook)
+let memoryEccangData: EccangSalesOverview | null = null;
 
 export function getEccangConfig(): EccangConfig {
   const env = runtimeEnv();
@@ -19,44 +23,153 @@ export function getEccangConfig(): EccangConfig {
 }
 
 /**
- * Mock / Live fetcher for ECCANG ERP Sales Analytics
+ * Calculates MD5 signature for ECCANG Open API calls
  */
-export async function fetchEccangAnalytics(): Promise<EccangSalesOverview> {
+export function createEccangSign(appKey: string, appSecret: string, timestamp: string, paramsStr: string): string {
+  // ECCANG standard: md5(app_key + timestamp + app_secret + biz_content)
+  return createHash("md5")
+    .update(`${appKey}${timestamp}${appSecret}${paramsStr}`)
+    .digest("hex")
+    .toLowerCase();
+}
+
+/**
+ * Helper to call official ECCANG Open API (易仓开放平台)
+ */
+export async function callEccangOpenApi(
+  service: string,
+  params: Record<string, unknown> = {},
+): Promise<{ success: boolean; data?: unknown; message?: string }> {
+  const config = getEccangConfig();
+  if (!config.configured) {
+    return {
+      success: false,
+      message: "未配置 ECCANG_APP_KEY 或 ECCANG_APP_SECRET，请在环境变量中设置",
+    };
+  }
+
+  const timestamp = Math.floor(Date.now() / 1000).toString();
+  const paramsStr = JSON.stringify(params);
+  const sign = createEccangSign(config.appKey, config.appSecret, timestamp, paramsStr);
+
+  try {
+    const res = await fetch(`${config.serviceUrl}/openapi/router`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "app-key": config.appKey,
+        "token": config.userToken || "",
+      },
+      body: JSON.stringify({
+        service,
+        app_key: config.appKey,
+        timestamp,
+        sign,
+        bizcontent: paramsStr,
+      }),
+    });
+
+    if (!res.ok) {
+      return { success: false, message: `ECCANG API HTTP ${res.status}: ${res.statusText}` };
+    }
+
+    const json = await res.json() as { code?: number; data?: unknown; msg?: string; message?: string };
+    if (json.code === 200 || json.code === 0) {
+      return { success: true, data: json.data };
+    }
+    return { success: false, message: json.msg || json.message || "ECCANG API call failed" };
+  } catch (err) {
+    return { success: false, message: err instanceof Error ? err.message : "Network error" };
+  }
+}
+
+/**
+ * Fetches real ECCANG ERP Sales Analytics.
+ * If no real credentials configured and no data pushed, returns null (clean empty state).
+ */
+export async function fetchEccangAnalytics(): Promise<EccangSalesOverview | null> {
+  // 1. If we already received synced data via webhook / AI push / API, return it:
+  if (memoryEccangData) {
+    return memoryEccangData;
+  }
+
   const config = getEccangConfig();
 
-  // In production with live API credentials, call ECCANG openapi gateway:
-  if (config.configured && config.userToken) {
+  // 2. In production with live API credentials, call live ECCANG openapi gateway:
+  if (config.configured) {
     try {
-      // ECCANG signature typically involves md5/sha256 of timestamp + token + params
       const res = await fetch(`${config.serviceUrl}/sales/report`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "app-key": config.appKey,
-          token: config.userToken,
+          token: config.userToken || "",
         },
         body: JSON.stringify({
           startDate: new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10),
           endDate: new Date().toISOString().slice(0, 10),
         }),
       });
+
       if (res.ok) {
         const live = await res.json() as EccangSalesOverview;
-        if (live && live.todayGmvUsd) return live;
+        if (live && typeof live.todayGmvUsd === "number") {
+          live.lastSyncAt = new Date().toISOString();
+          live.dataSource = "live_api";
+          memoryEccangData = live;
+          return live;
+        }
       }
     } catch (err) {
-      console.warn("Live ECCANG API call failed, falling back to cached enterprise model:", err);
+      console.warn("Live ECCANG API call failed:", err);
     }
   }
 
-  // High-fidelity enterprise clothing 2C dataset based on MGOO's real business profile
-  return {
+  // 3. Virtual mock data is cleared: Return null when not configured or no real data pushed
+  return null;
+}
+
+/**
+ * Updates or pushes ECCANG ERP analytics data from an external script, webhook, or AI agent.
+ */
+export function updateEccangAnalytics(payload: Partial<EccangSalesOverview>): EccangSalesOverview {
+  const merged: EccangSalesOverview = {
+    todayGmvUsd: Number(payload.todayGmvUsd || 0),
+    monthGmvUsd: Number(payload.monthGmvUsd || 0),
+    monthOrdersCount: Number(payload.monthOrdersCount || 0),
+    avgOrderValueUsd: Number(payload.avgOrderValueUsd || 0),
+    grossMarginPct: Number(payload.grossMarginPct || 0),
+    returnRatePct: Number(payload.returnRatePct || 0),
+    platformDistribution: Array.isArray(payload.platformDistribution) ? payload.platformDistribution : [],
+    topSkus: Array.isArray(payload.topSkus) ? payload.topSkus : [],
+    inventoryAlerts: Array.isArray(payload.inventoryAlerts) ? payload.inventoryAlerts : [],
+    lastSyncAt: new Date().toISOString(),
+    dataSource: payload.dataSource || "webhook_push",
+  };
+
+  memoryEccangData = merged;
+  return merged;
+}
+
+/**
+ * Clears current ECCANG data back to empty state.
+ */
+export function clearEccangAnalytics(): void {
+  memoryEccangData = null;
+}
+
+/**
+ * Injects a high-fidelity sample dataset for demonstration or testing when requested by user.
+ */
+export function injectSampleEccangData(): EccangSalesOverview {
+  return updateEccangAnalytics({
     todayGmvUsd: 14280.5,
     monthGmvUsd: 384500.0,
     monthOrdersCount: 6420,
     avgOrderValueUsd: 59.89,
     grossMarginPct: 54.2,
     returnRatePct: 4.8,
+    dataSource: "sample_test",
     platformDistribution: [
       { platform: "TikTok Shop (US)", gmvShare: 42, gmvAmountUsd: 161490, orderCount: 2850, color: "#000000" },
       { platform: "Shopify (Brand D2C)", gmvShare: 31, gmvAmountUsd: 119195, orderCount: 1820, color: "#96bf48" },
@@ -100,18 +213,6 @@ export async function fetchEccangAnalytics(): Promise<EccangSalesOverview> {
         growthPct: 45.2,
         b2bSynergyTip: "短袖百搭底胚！海外 TikTok 网红开箱常客。目前工厂现胚库存偏紧，可促成 B2B 买家提前下定金锁胚。",
       },
-      {
-        sku: "MGOO-SW-380-GRY",
-        name: "380gsm Heavy Fleece Jogger Sweatpants (Heather Grey)",
-        category: "Streetwear",
-        monthlySalesUnits: 890,
-        inventoryLevel: 510,
-        safetyStock: 250,
-        status: "healthy",
-        revenueUsd: 48950,
-        growthPct: 15.6,
-        b2bSynergyTip: "与 400g 卫衣搭配成套（Set）出单率高达 64%，适合打包推荐给客单价高的欧美潮牌。",
-      },
     ],
     inventoryAlerts: [
       {
@@ -125,16 +226,9 @@ export async function fetchEccangAnalytics(): Promise<EccangSalesOverview> {
         warehouse: "东莞保税制造仓 (国内胚布仓)",
         sku: "380g 纯棉毛圈原胚面料 (黑/白)",
         remainingDays: 14,
-        actionRequired: "下达 5 吨面料定织订单，支撑 11 月黑五海外旺季现货翻单",
+        actionRequired: "下达 5 吨面料定织订单，支撑海外旺季现货翻单",
         urgency: "warning",
       },
-      {
-        warehouse: "英国伦敦仓",
-        sku: "MGOO-YG-08-NUD (Olive Green / M)",
-        remainingDays: 28,
-        actionRequired: "常态海运补货跟踪中",
-        urgency: "normal",
-      },
     ],
-  };
+  });
 }
