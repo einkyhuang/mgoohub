@@ -52,21 +52,43 @@
 
 ---
 
-## 🚀 快速启动指南
+## 🚀 极速一键安装与启动 (One-Click Quick Start)
 
-### 1. 克隆与安装依赖
+### 选项 A：一键全自动安装运行（推荐）
+
+直接在终端复制运行以下单行命令，将自动克隆、安装依赖、创建配置文件并启动服务：
+
 ```bash
+git clone https://github.com/einkyhuang/mgoohub.git && cd mgoohub && ./setup.sh
+```
+
+### 选项 B：分步标准安装
+
+```bash
+# 1. 克隆仓库
 git clone https://github.com/einkyhuang/mgoohub.git
 cd mgoohub
+
+# 2. 安装项目依赖
 npm install
+
+# 3. 创建本地配置文件 (系统内置高保真外贸中台模型，不填任何 Key 也能直接运行全部功能)
+cp -n .env.example .dev.vars
+
+# 4. 启动本地开发服务
+npm run dev
 ```
 
-### 2. 配置环境变量
-复制 `.env.example` 为 `.dev.vars`：
-```bash
-cp .env.example .dev.vars
-```
-填入您的 API 密钥（如 `SALESMARTLY_API_TOKEN`、`DEEPSEEK_API_KEY` 等）。
+运行成功后，在浏览器访问 **`http://localhost:5173`** 即可打开工作台。
+
+---
+
+## 🔑 生产配置（可选）
+
+如需接入生产环境的真实服务，可编辑本地 `.dev.vars`：
+- **AI 大模型**：`DEEPSEEK_API_KEY` 或 `OPENAI_API_KEY`（留空时自动使用内置 16 年外贸知识模型）
+- **SaleSmartly**：`SALESMARTLY_PROJECT_ID`、`SALESMARTLY_API_TOKEN`、`SALESMARTLY_WEBHOOK_SECRET`
+- **易仓 ERP**：`ECCANG_APP_KEY`、`ECCANG_APP_SECRET`、`ECCANG_SERVICE_URL`（支持通过 `/api/eccang/analytics` 接收外部推送）
 
 ### 3. 本地启动开发服务器
 ```bash
