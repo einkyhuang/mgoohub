@@ -30,6 +30,30 @@ export interface VisualDeliverable {
   nextActionChecklist: string[];
 }
 
+export interface PipelineStepResult {
+  step: number;
+  employeeId: string;
+  employeeName: string;
+  avatar: string;
+  actionTitle: string;
+  status: "completed" | "running" | "pending";
+  deliverable: VisualDeliverable;
+  keyOutput: string;
+}
+
+export interface PipelineExecutionReport {
+  targetNiche: string;
+  executedAt: string;
+  totalDurationMs: number;
+  leadScore: number;
+  leadTier: string;
+  steps: PipelineStepResult[];
+  readyOutreach: {
+    channel: string;
+    text: string;
+  };
+}
+
 export interface AIEmployee {
   id: string;
   number: number;
