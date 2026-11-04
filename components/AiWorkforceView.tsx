@@ -20,6 +20,7 @@ import {
   FileText,
   Flame,
   Globe,
+  KeyRound,
   Layers,
   Mail,
   MessageSquare,
@@ -92,6 +93,34 @@ export function AiWorkforceView() {
 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [activeTemplateTab, setActiveTemplateTab] = useState<number>(0);
+  const [aiStatus, setAiStatus] = useState<{
+    hasAiKey: boolean;
+    activeAiProvider: string;
+    model: string;
+  }>({
+    hasAiKey: false,
+    activeAiProvider: "内置离线模型",
+    model: "",
+  });
+
+  const loadAiStatus = () => {
+    fetch("/api/settings/keys")
+      .then((res) => res.json())
+      .then((json: any) => {
+        if (json.data?.status) {
+          setAiStatus({
+            hasAiKey: json.data.status.hasAiKey,
+            activeAiProvider: json.data.status.activeAiProvider,
+            model: json.data.aiProvider === "deepseek" ? json.data.deepSeekModel : json.data.openAiModel,
+          });
+        }
+      })
+      .catch(() => undefined);
+  };
+
+  const goToSettings = () => {
+    window.dispatchEvent(new CustomEvent("navigate-view", { detail: "settings" }));
+  };
 
   const copyToClipboard = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -180,6 +209,7 @@ export function AiWorkforceView() {
 
   // Initial trigger for immediate preview
   useEffect(() => {
+    loadAiStatus();
     handleRunPipeline();
   }, []);
 
@@ -195,8 +225,20 @@ export function AiWorkforceView() {
             <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 bg-emerald-500/10 text-xs">
               8 位专职 AI 员工全员在线
             </Badge>
-            <Badge variant="outline" className="border-sky-400/40 text-sky-300 bg-sky-500/10 text-xs">
-              可视化 HTML 交付物
+            <Badge
+              variant="outline"
+              onClick={goToSettings}
+              className={`text-xs flex items-center gap-1 cursor-pointer transition-colors ${
+                aiStatus.hasAiKey
+                  ? "border-emerald-400/40 text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20"
+                  : "border-sky-400/40 text-sky-300 bg-sky-500/10 hover:bg-sky-500/20"
+              }`}
+              title="点击可前往系统设置配置或切换 API 密钥"
+            >
+              <Cpu className="h-3 w-3" />
+              {aiStatus.hasAiKey
+                ? `大模型: ${aiStatus.activeAiProvider} 已驱动 (${aiStatus.model})`
+                : "内置 16 年外贸知识大模型 · 点击配置 API"}
             </Badge>
           </div>
           <h2 className="text-2xl font-bold tracking-tight">24 小时不间断作业的 MGOO 智能外贸数字兵团</h2>
@@ -234,6 +276,31 @@ export function AiWorkforceView() {
           </span>
         </div>
       </section>
+
+      {/* AI Engine Status & Configuration Notice Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-sky-200/70 bg-sky-50/80 p-3.5 px-4 text-xs text-sky-950 shadow-2xs">
+        <div className="flex items-center gap-2.5">
+          <span className="grid h-7 w-7 place-items-center rounded-xl bg-sky-100 text-sky-700 font-bold shrink-0 border border-sky-200">
+            <KeyRound className="h-3.5 w-3.5" />
+          </span>
+          <div>
+            <p className="font-bold text-sky-950">
+              统一大模型 API 驱动机制：
+              <span className="font-normal text-slate-600 ml-1">
+                8 位 AI 员工统一共享工作台全局 API 密钥。只需在「系统设置」配置一次 <b>DeepSeek</b> 或 <b>OpenAI</b>，8 位员工即刻全员自动激活，无需逐个配置！
+              </span>
+            </p>
+          </div>
+        </div>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={goToSettings}
+          className="rounded-xl border-sky-300 bg-white text-sky-800 hover:bg-sky-100 text-xs h-7 shrink-0 font-semibold"
+        >
+          {aiStatus.hasAiKey ? "管理 / 切换 API Key →" : "前往配置 API Key →"}
+        </Button>
+      </div>
 
       {/* MODE 1: Autonomous Lead Generation Pipeline (用户问到的核心功能：全员自动化) */}
       {workMode === "pipeline" && (

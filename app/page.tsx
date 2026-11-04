@@ -1627,6 +1627,13 @@ export default function Home() {
         if (payload.summary) setSummary(payload.summary);
       })
       .catch(() => undefined);
+
+    const navHandler = (e: Event) => {
+      const custom = e as CustomEvent<View>;
+      if (custom.detail) setView(custom.detail);
+    };
+    window.addEventListener("navigate-view", navHandler);
+    return () => window.removeEventListener("navigate-view", navHandler);
   }, []);
 
   return (
