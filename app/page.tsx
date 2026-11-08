@@ -512,7 +512,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                       <p className="text-[11px] text-slate-500 mt-0.5">RAW DISCIPLINE LA · 380g 连帽卫衣做旧确认</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                      ● 已确认
+                      ● 已完成
                     </span>
                   </div>
 
@@ -522,7 +522,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                       <p className="text-[11px] text-slate-500 mt-0.5">LUMEN Active London · 裸感提臀瑜伽裤防透打样</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                      ● 已确认
+                      ● 沟通完成
                     </span>
                   </div>
 
@@ -532,7 +532,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                       <p className="text-[11px] text-slate-500 mt-0.5">Apex Athletic Sydney · 1,000 件定金与空运谈判</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-[10px] font-semibold text-sky-700 border border-sky-200">
-                      ● 已安排
+                      ● 下午待进行
                     </span>
                   </div>
 
@@ -542,7 +542,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                       <p className="text-[11px] text-slate-500 mt-0.5">欧美街潮品牌 · 50 件现胚发泡印花排期</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-[10px] font-semibold text-amber-700 border border-amber-200">
-                      ● 改期谈判
+                      ● 下午待进行
                     </span>
                   </div>
                 </div>
@@ -750,7 +750,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     外贸转化全流程漏斗 (Leasing funnel)
                   </h3>
                   <p className="mt-0.5 text-xs text-slate-500">
-                    Jun 23 to Sep 21 · 全部海外渠道与买家线索
+                    2026年8月10日 至 11月08日 (今日) · 全部海外渠道与买家线索
                   </p>
                 </div>
                 <div className="inline-flex rounded-full bg-slate-100 p-1 border border-slate-200/80 text-xs font-semibold">
@@ -1013,7 +1013,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                   <td className="py-3.5 px-4 font-medium text-slate-800">400g 连帽卫衣 (Unit 305)</td>
                   <td className="py-3.5 px-4 font-bold text-slate-900">$2,400</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">10月19日 <span className="text-rose-600 font-bold">28天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月11日 <span className="text-rose-600 font-bold">3天后到期</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-rose-200">
                       <div className="h-full w-3/4 rounded-full bg-rose-500" />
                     </div>
@@ -1033,13 +1033,13 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     </span>
                     <div>
                       <p className="font-bold text-slate-900">Grace Kim</p>
-                      <p className="text-[10px] text-slate-400">Oakline Lofts (2023合作)</p>
+                      <p className="text-[10px] text-slate-400">Oakline Lofts (2025合作)</p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4 font-medium text-slate-800">裸感瑜伽裤 (Unit 112)</td>
                   <td className="py-3.5 px-4 font-bold text-slate-900">$1,850</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">10月25日 <span className="text-slate-500">34天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月14日 <span className="text-slate-500">6天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/2 rounded-full bg-slate-400" />
                     </div>
@@ -1059,13 +1059,13 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     </span>
                     <div>
                       <p className="font-bold text-slate-900">Tomás Rivera</p>
-                      <p className="text-[10px] text-slate-400">The Alder (2022合作)</p>
+                      <p className="text-[10px] text-slate-400">The Alder (2025合作)</p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4 font-medium text-slate-800">240g 纯棉T恤 (Unit 306)</td>
                   <td className="py-3.5 px-4 font-bold text-slate-900">$2,250</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月08日 <span className="text-slate-500">48天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月18日 <span className="text-slate-500">10天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/3 rounded-full bg-slate-400" />
                     </div>
@@ -1085,13 +1085,13 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     </span>
                     <div>
                       <p className="font-bold text-slate-900">Julia Novak</p>
-                      <p className="text-[10px] text-slate-400">Marlowe Court (2024合作)</p>
+                      <p className="text-[10px] text-slate-400">Marlowe Court (2026合作)</p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4 font-medium text-slate-800">重磅卫裤成套 (Unit 207)</td>
                   <td className="py-3.5 px-4 font-bold text-slate-900">$1,980</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月14日 <span className="text-slate-500">54天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月24日 <span className="text-slate-500">16天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/4 rounded-full bg-slate-400" />
                     </div>
@@ -1111,13 +1111,13 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     </span>
                     <div>
                       <p className="font-bold text-slate-900">Dev Malhotra</p>
-                      <p className="text-[10px] text-slate-400">Juniper Flats (2023合作)</p>
+                      <p className="text-[10px] text-slate-400">Juniper Flats (2026合作)</p>
                     </div>
                   </td>
                   <td className="py-3.5 px-4 font-medium text-slate-800">健身速干背心 (Unit 415)</td>
                   <td className="py-3.5 px-4 font-bold text-slate-900">$2,600</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月20日 <span className="text-slate-500">60天后</span></p>
+                    <p className="text-slate-900 font-semibold">12月02日 <span className="text-slate-500">24天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-sky-200">
                       <div className="h-full w-2/3 rounded-full bg-sky-500" />
                     </div>
@@ -1534,11 +1534,11 @@ function RulesView() {
 }
 
 const demoAuditEvents: AuditEvent[] = [
-  { id: "demo-audit-1", time: "16:42:08", icon: Database, action: "同步完成", detail: "会话 50 · 消息 50 · 客户 50", status: "成功" },
-  { id: "demo-audit-2", time: "16:40:31", icon: Sparkles, action: "规则命中", detail: "询价与 MOQ · Liam Carter", status: "已生成草稿" },
-  { id: "demo-audit-3", time: "16:36:12", icon: ContactRound, action: "客户阶段更新", detail: "Sophia Müller · 新线索 → 意向", status: "人工操作" },
-  { id: "demo-audit-4", time: "16:28:49", icon: CircleAlert, action: "账号状态变化", detail: "MGOO LATAM · 连接质量下降", status: "需检查" },
-  { id: "demo-audit-5", time: "16:18:02", icon: Send, action: "回复已发送", detail: "Lucas Ferreira · 操作者 Ana", status: "成功" },
+  { id: "demo-audit-1", time: "12:24:18", icon: Database, action: "全渠道同步完成", detail: "会话 10 · 消息 68 · 活跃客户 10", status: "成功" },
+  { id: "demo-audit-2", time: "12:18:05", icon: Sparkles, action: "AI 规则命中", detail: "欧美重磅卫衣询价与 MOQ · Liam Carter", status: "已生成草稿" },
+  { id: "demo-audit-3", time: "11:42:30", icon: ContactRound, action: "客户阶段推进", detail: "Chloe Evans · 待回复 → 方案跟进 (裸感提臀瑜伽裤)", status: "人工确认" },
+  { id: "demo-audit-4", time: "11:05:12", icon: Send, action: "WhatsApp 回复发送", detail: "David Miller · 1,000件阶梯定金方案 · 操作者 KY", status: "成功" },
+  { id: "demo-audit-5", time: "09:00:15", icon: Sparkles, action: "晨间自动交接", detail: "夜间看护报告已归档 · 3 位高意向买家已交接", status: "已交接" },
 ];
 
 const AUDIT_STATUS_LABEL: Record<string, string> = { "draft-only": "仅草稿", "received-live": "实时接收", "human-review": "待人工审核", drafted: "已生成草稿", sent: "已发送", "send-failed": "发送失败" };
@@ -1745,8 +1745,8 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <SidebarTrigger className="-ml-1 rounded-xl text-slate-600 hover:text-slate-900" />
               <div>
-                <h2 className="text-base font-bold text-slate-900 tracking-tight">早上好，KY</h2>
-                <p className="text-[11px] text-slate-400">全域跨渠道外贸客户推进与 AI 协同中台</p>
+                <h2 className="text-base font-bold text-slate-900 tracking-tight">中午好，KY</h2>
+                <p className="text-[11px] text-slate-400">2026年11月8日 · 星期日 · 东莞总厂运营中 · 全域外贸协同中台</p>
               </div>
             </div>
 

@@ -112,7 +112,7 @@ export function generateMorningReport(recentJobs: {
         customerName: "Liam Carter",
         phoneOrContact: "+1 (310) 849-2184",
         channel: "WhatsApp (MGOO-Lorna)",
-        receivedAt: "02:41 AM",
+        receivedAt: "02:41 AM (今晨)",
         inquiryProduct: "400gsm Heavyweight Streetwear Hoodie",
         qualifiedNeeds: {
           targetQty: "50 pcs (Drop #1)",
@@ -129,7 +129,7 @@ export function generateMorningReport(recentJobs: {
         customerName: "Elena Rostova",
         phoneOrContact: "+44 7911 123456",
         channel: "WhatsApp (Madge Ma)",
-        receivedAt: "04:15 AM",
+        receivedAt: "04:15 AM (今晨)",
         inquiryProduct: "Seamless Butter-soft Yoga Flares",
         qualifiedNeeds: {
           targetQty: "100 pcs (Mixed sizes XS-XL)",
@@ -146,7 +146,7 @@ export function generateMorningReport(recentJobs: {
         customerName: "Tariq Al-Mansoor",
         phoneOrContact: "+971 50 987 6543",
         channel: "WhatsApp (MGOO-Vivien)",
-        receivedAt: "05:30 AM",
+        receivedAt: "05:30 AM (今晨)",
         inquiryProduct: "Oversized Heavyweight Tees (250g)",
         qualifiedNeeds: {
           targetQty: "200 pcs",
@@ -164,7 +164,7 @@ export function generateMorningReport(recentJobs: {
   const urgentCount = leads.filter((l) => l.urgency === "high").length;
 
   return {
-    period: "昨夜 19:00 - 今晨 09:00",
+    period: "昨夜 19:00 - 今日 09:00 (11月08日 周日交接)",
     totalNightMessages: leads.length * 3 + 4,
     aiHandledCount: leads.length * 3 + 4,
     averageResponseTimeSec: 4.8,
