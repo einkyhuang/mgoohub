@@ -508,28 +508,28 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <div className="mt-4 space-y-3">
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">10:30 AM · Marcus Vance</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">RAW DISCIPLINE LA · 380g 连帽卫衣做旧确认</p>
+                      <p className="text-xs font-bold text-slate-900">09:30 AM · Austin Hayes</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">VAPOR GRIP LA · 450g 法式毛圈拉链卫衣做旧面料确认</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                      ● 已完成
+                      ● 上午已沟通
                     </span>
                   </div>
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">12:00 PM · Chloe Evans</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">LUMEN Active London · 裸感提臀瑜伽裤防透打样</p>
+                      <p className="text-xs font-bold text-slate-900">10:45 AM · Zayn Al-Hassan</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">OASIS FIT 迪拜 · 300 套无缝健身服空运 DDP 方案</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
-                      ● 沟通完成
+                      ● 刚完成核价
                     </span>
                   </div>
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">2:30 PM · David Miller</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">Apex Athletic Sydney · 1,000 件定金与空运谈判</p>
+                      <p className="text-xs font-bold text-slate-900">2:00 PM · Damon Cross</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">7TH DISCIPLINE 纽约 · 首笔大货定金到账与排产会议</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-[10px] font-semibold text-sky-700 border border-sky-200">
                       ● 下午待进行
@@ -538,10 +538,10 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">4:30 PM · Tom Becker</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">欧美街潮品牌 · 50 件现胚发泡印花排期</p>
+                      <p className="text-xs font-bold text-slate-900">4:15 PM · Kaito Tanaka</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">TANAKA LAB 东京 · 1,000 件定织定染合同与排期确认</p>
                     </div>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-[10px] font-semibold text-amber-700 border border-amber-200">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-[10px] font-semibold text-sky-700 border border-sky-200">
                       ● 下午待进行
                     </span>
                   </div>
@@ -750,7 +750,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     外贸转化全流程漏斗 (Leasing funnel)
                   </h3>
                   <p className="mt-0.5 text-xs text-slate-500">
-                    2026年8月10日 至 11月08日 (今日) · 全部海外渠道与买家线索
+                    2026年8月11日 至 11月09日 (今日周一) · 全部海外渠道与买家线索
                   </p>
                 </div>
                 <div className="inline-flex rounded-full bg-slate-100 p-1 border border-slate-200/80 text-xs font-semibold">
@@ -1002,26 +1002,26 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      RL
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-900 text-white font-bold text-xs">
+                      DC
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Robert Lang</p>
-                      <p className="text-[10px] text-slate-400">Finch &amp; Ninth (2024合作)</p>
+                      <p className="font-bold text-slate-900">Damon Cross</p>
+                      <p className="text-[10px] text-slate-400">7TH DISCIPLINE (纽约)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">400g 连帽卫衣 (Unit 305)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$2,400</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">450g 重磅做旧套装 (Unit 501)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$14,600</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月11日 <span className="text-rose-600 font-bold">3天后到期</span></p>
+                    <p className="text-slate-900 font-semibold">11月12日 <span className="text-rose-600 font-bold">3天后到期</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-rose-200">
                       <div className="h-full w-3/4 rounded-full bg-rose-500" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">希望签订 6 个月供货协议</td>
+                  <td className="py-3.5 px-4 text-slate-600">40% 首笔电汇到账，需排产</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-semibold">
-                      ● 需紧急跟进
+                      ● 需紧急排产
                     </span>
                   </td>
                 </tr>
@@ -1029,25 +1029,25 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      GK
+                      KT
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Grace Kim</p>
-                      <p className="text-[10px] text-slate-400">Oakline Lofts (2025合作)</p>
+                      <p className="font-bold text-slate-900">Kaito Tanaka (田中健人)</p>
+                      <p className="text-[10px] text-slate-400">TANAKA LAB (东京)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">裸感瑜伽裤 (Unit 112)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$1,850</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">定织落肩重磅卫衣 (Unit 802)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$28,500</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月14日 <span className="text-slate-500">6天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月16日 <span className="text-slate-500">7天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
-                      <div className="h-full w-1/2 rounded-full bg-slate-400" />
+                      <div className="h-full w-4/5 rounded-full bg-emerald-500" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-500">暂无回复，已发 2 条消息</td>
+                  <td className="py-3.5 px-4 text-slate-600">CEO 签署 1,000 件合同生效</td>
                   <td className="py-3.5 px-4">
-                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium">
-                      ● 暂无回复
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
+                      ● 重点大单已锁定
                     </span>
                   </td>
                 </tr>
@@ -1055,48 +1055,22 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      TR
+                      ZA
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Tomás Rivera</p>
-                      <p className="text-[10px] text-slate-400">The Alder (2025合作)</p>
+                      <p className="font-bold text-slate-900">Zayn Al-Hassan</p>
+                      <p className="text-[10px] text-slate-400">OASIS FIT (迪拜)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">240g 纯棉T恤 (Unit 306)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$2,250</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">无缝健身速干套装 (Unit 210)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$8,900</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月18日 <span className="text-slate-500">10天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月19日 <span className="text-slate-500">10天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/3 rounded-full bg-slate-400" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">正在评估换季新品预算</td>
-                  <td className="py-3.5 px-4">
-                    <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-semibold">
-                      ● 重点培育
-                    </span>
-                  </td>
-                </tr>
-
-                <tr className="hover:bg-slate-50/70 transition-colors">
-                  <td className="py-3.5 px-4 flex items-center gap-3">
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      JN
-                    </span>
-                    <div>
-                      <p className="font-bold text-slate-900">Julia Novak</p>
-                      <p className="text-[10px] text-slate-400">Marlowe Court (2026合作)</p>
-                    </div>
-                  </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">重磅卫裤成套 (Unit 207)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$1,980</td>
-                  <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月24日 <span className="text-slate-500">16天后</span></p>
-                    <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
-                      <div className="h-full w-1/4 rounded-full bg-slate-400" />
-                    </div>
-                  </td>
-                  <td className="py-3.5 px-4 text-slate-600">已二次打开报价单</td>
+                  <td className="py-3.5 px-4 text-slate-600">DDP 迪拜空运报价单已二次查阅</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200 text-[10px] font-semibold">
                       ● 报价已送达
@@ -1107,25 +1081,51 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      DM
+                      MF
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Dev Malhotra</p>
-                      <p className="text-[10px] text-slate-400">Juniper Flats (2026合作)</p>
+                      <p className="font-bold text-slate-900">Mateo Fernandez</p>
+                      <p className="text-[10px] text-slate-400">NOCTURNE (马德里)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">健身速干背心 (Unit 415)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$2,600</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">260g 发泡印花T恤 (Unit 308)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$3,450</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">12月02日 <span className="text-slate-500">24天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月25日 <span className="text-slate-500">16天后</span></p>
+                    <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
+                      <div className="h-full w-1/4 rounded-full bg-slate-400" />
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 text-slate-600">冬季胶囊系列试单 120 件</td>
+                  <td className="py-3.5 px-4">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-semibold">
+                      ● 重点培育
+                    </span>
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-slate-50/70 transition-colors">
+                  <td className="py-3.5 px-4 flex items-center gap-3">
+                    <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
+                      CR
+                    </span>
+                    <div>
+                      <p className="font-bold text-slate-900">Camilla Rossi</p>
+                      <p className="text-[10px] text-slate-400">ATELIER MILANO (米兰)</p>
+                    </div>
+                  </td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">提花瑜伽服首批 (Unit 115)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$6,800</td>
+                  <td className="py-3.5 px-4">
+                    <p className="text-slate-900 font-semibold">12月05日 <span className="text-slate-500">26天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-sky-200">
                       <div className="h-full w-2/3 rounded-full bg-sky-500" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-emerald-700 font-semibold">意向续签翻单，准备打样</td>
+                  <td className="py-3.5 px-4 text-emerald-700 font-semibold">正准备寄送腰带提花样卡与色板</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
-                      ● 高意向商机
+                      ● 推进打样
                     </span>
                   </td>
                 </tr>
@@ -1534,11 +1534,11 @@ function RulesView() {
 }
 
 const demoAuditEvents: AuditEvent[] = [
-  { id: "demo-audit-1", time: "12:24:18", icon: Database, action: "全渠道同步完成", detail: "会话 10 · 消息 68 · 活跃客户 10", status: "成功" },
-  { id: "demo-audit-2", time: "12:18:05", icon: Sparkles, action: "AI 规则命中", detail: "欧美重磅卫衣询价与 MOQ · Liam Carter", status: "已生成草稿" },
-  { id: "demo-audit-3", time: "11:42:30", icon: ContactRound, action: "客户阶段推进", detail: "Chloe Evans · 待回复 → 方案跟进 (裸感提臀瑜伽裤)", status: "人工确认" },
-  { id: "demo-audit-4", time: "11:05:12", icon: Send, action: "WhatsApp 回复发送", detail: "David Miller · 1,000件阶梯定金方案 · 操作者 KY", status: "成功" },
-  { id: "demo-audit-5", time: "09:00:15", icon: Sparkles, action: "晨间自动交接", detail: "夜间看护报告已归档 · 3 位高意向买家已交接", status: "已交接" },
+  { id: "demo-audit-1", time: "11:02:15", icon: Database, action: "全渠道同步完成", detail: "会话 10 · 消息 74 · 活跃客户 10", status: "成功" },
+  { id: "demo-audit-2", time: "10:48:32", icon: Sparkles, action: "大单合同生效", detail: "Kaito Tanaka · 1,000件定织落肩卫衣已签约", status: "已锁定" },
+  { id: "demo-audit-3", time: "10:20:10", icon: ContactRound, action: "客户阶段推进", detail: "Damon Cross · 40% 首笔电汇到账 ($5,840)", status: "已成交" },
+  { id: "demo-audit-4", time: "09:45:18", icon: Sparkles, action: "AI 规则命中", detail: "迪拜无缝瑜伽服阶梯报价 · Zayn Al-Hassan", status: "已生成草稿" },
+  { id: "demo-audit-5", time: "09:00:05", icon: Send, action: "周一晨间交接", detail: "夜间及周末看护报告归档 · 3 位海外高意向买家已指派业务员", status: "已交接" },
 ];
 
 const AUDIT_STATUS_LABEL: Record<string, string> = { "draft-only": "仅草稿", "received-live": "实时接收", "human-review": "待人工审核", drafted: "已生成草稿", sent: "已发送", "send-failed": "发送失败" };
@@ -1745,8 +1745,8 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <SidebarTrigger className="-ml-1 rounded-xl text-slate-600 hover:text-slate-900" />
               <div>
-                <h2 className="text-base font-bold text-slate-900 tracking-tight">中午好，KY</h2>
-                <p className="text-[11px] text-slate-400">2026年11月8日 · 星期日 · 东莞总厂运营中 · 全域外贸协同中台</p>
+                <h2 className="text-base font-bold text-slate-900 tracking-tight">上午好，KY</h2>
+                <p className="text-[11px] text-slate-400">2026年11月9日 · 星期一 · 东莞总厂运营中 · 全域外贸协同中台</p>
               </div>
             </div>
 
