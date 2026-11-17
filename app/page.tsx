@@ -508,8 +508,8 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <div className="mt-4 space-y-3">
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">09:30 AM · Austin Hayes</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">VAPOR GRIP LA · 450g 法式毛圈拉链卫衣做旧面料确认</p>
+                      <p className="text-xs font-bold text-slate-900">09:30 AM · Liam Sterling</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">AETHER APPAREL 伦敦 · 500g 重磅做旧拉链卫衣色卡面料确认</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
                       ● 上午已沟通
@@ -518,8 +518,8 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">10:45 AM · Zayn Al-Hassan</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">OASIS FIT 迪拜 · 300 套无缝健身服空运 DDP 方案</p>
+                      <p className="text-xs font-bold text-slate-900">10:45 AM · Tariq Al-Mansoor</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">NOIR ATHLETICS 迪拜 · 400 套无缝压缩训练服空运 DDP 方案</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
                       ● 刚完成核价
@@ -528,8 +528,8 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">2:00 PM · Damon Cross</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">7TH DISCIPLINE 纽约 · 首笔大货定金到账与排产会议</p>
+                      <p className="text-xs font-bold text-slate-900">2:00 PM · Zachary Miller</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">DISTRICT 9 纽约 · 50% 首笔大货定金到账与排产会议</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-[10px] font-semibold text-sky-700 border border-sky-200">
                       ● 下午待进行
@@ -538,8 +538,8 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
 
                   <div className="flex items-start justify-between gap-3 p-2.5 rounded-2xl hover:bg-slate-50 transition-colors">
                     <div>
-                      <p className="text-xs font-bold text-slate-900">4:15 PM · Kaito Tanaka</p>
-                      <p className="text-[11px] text-slate-500 mt-0.5">TANAKA LAB 东京 · 1,000 件定织定染合同与排期确认</p>
+                      <p className="text-xs font-bold text-slate-900">4:15 PM · Kenji Takahashi</p>
+                      <p className="text-[11px] text-slate-500 mt-0.5">HYPERCRAFT 东京 · 1,200 件落肩重磅T恤大货生产交期确认</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-sky-50 text-[10px] font-semibold text-sky-700 border border-sky-200">
                       ● 下午待进行
@@ -750,7 +750,7 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     外贸转化全流程漏斗 (Leasing funnel)
                   </h3>
                   <p className="mt-0.5 text-xs text-slate-500">
-                    2026年8月11日 至 11月09日 (今日周一) · 全部海外渠道与买家线索
+                    2026年8月19日 至 11月17日 (今日周二) · 全部海外渠道与买家线索
                   </p>
                 </div>
                 <div className="inline-flex rounded-full bg-slate-100 p-1 border border-slate-200/80 text-xs font-semibold">
@@ -1007,18 +1007,18 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                     </span>
                     <div>
                       <p className="font-bold text-slate-900">Damon Cross</p>
-                      <p className="text-[10px] text-slate-400">7TH DISCIPLINE (纽约)</p>
+                      <p className="text-[10px] text-slate-400">DISTRICT 9 (纽约)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">450g 重磅做旧套装 (Unit 501)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$14,600</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">500g 极限重磅做旧套装 (Unit 501)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$18,400</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月12日 <span className="text-rose-600 font-bold">3天后到期</span></p>
+                    <p className="text-slate-900 font-semibold">11月20日 <span className="text-rose-600 font-bold">3天后到期</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-rose-200">
                       <div className="h-full w-3/4 rounded-full bg-rose-500" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">40% 首笔电汇到账，需排产</td>
+                  <td className="py-3.5 px-4 text-slate-600">50% 首笔电汇到账，需排产</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-semibold">
                       ● 需紧急排产
@@ -1032,19 +1032,19 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                       KT
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Kaito Tanaka (田中健人)</p>
-                      <p className="text-[10px] text-slate-400">TANAKA LAB (东京)</p>
+                      <p className="font-bold text-slate-900">Kenji Takahashi (高桥健司)</p>
+                      <p className="text-[10px] text-slate-400">HYPERCRAFT (东京)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">定织落肩重磅卫衣 (Unit 802)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$28,500</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">定织落肩重磅T恤 (Unit 802)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$34,800</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月16日 <span className="text-slate-500">7天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月24日 <span className="text-slate-500">7天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-4/5 rounded-full bg-emerald-500" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">CEO 签署 1,000 件合同生效</td>
+                  <td className="py-3.5 px-4 text-slate-600">总监签署 1,200 件大货订单锁定</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
                       ● 重点大单已锁定
@@ -1055,17 +1055,17 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      ZA
+                      TA
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Zayn Al-Hassan</p>
-                      <p className="text-[10px] text-slate-400">OASIS FIT (迪拜)</p>
+                      <p className="font-bold text-slate-900">Tariq Al-Mansoor</p>
+                      <p className="text-[10px] text-slate-400">NOIR ATHLETICS (迪拜)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">无缝健身速干套装 (Unit 210)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$8,900</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">无缝压缩健身训练套装 (Unit 210)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$11,200</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月19日 <span className="text-slate-500">10天后</span></p>
+                    <p className="text-slate-900 font-semibold">11月27日 <span className="text-slate-500">10天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/3 rounded-full bg-slate-400" />
                     </div>
@@ -1081,22 +1081,22 @@ function Overview({ onOpenInbox, accounts, conversations, trendData, summary, le
                 <tr className="hover:bg-slate-50/70 transition-colors">
                   <td className="py-3.5 px-4 flex items-center gap-3">
                     <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200">
-                      MF
+                      ER
                     </span>
                     <div>
-                      <p className="font-bold text-slate-900">Mateo Fernandez</p>
-                      <p className="text-[10px] text-slate-400">NOCTURNE (马德里)</p>
+                      <p className="font-bold text-slate-900">Elena Rostova</p>
+                      <p className="text-[10px] text-slate-400">KRAFTWERK CLUB (柏林)</p>
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-slate-800">260g 发泡印花T恤 (Unit 308)</td>
-                  <td className="py-3.5 px-4 font-bold text-slate-900">$3,450</td>
+                  <td className="py-3.5 px-4 font-medium text-slate-800">280g 酵洗做旧发泡印花T恤 (Unit 308)</td>
+                  <td className="py-3.5 px-4 font-bold text-slate-900">$5,600</td>
                   <td className="py-3.5 px-4">
-                    <p className="text-slate-900 font-semibold">11月25日 <span className="text-slate-500">16天后</span></p>
+                    <p className="text-slate-900 font-semibold">12月03日 <span className="text-slate-500">16天后</span></p>
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-slate-200">
                       <div className="h-full w-1/4 rounded-full bg-slate-400" />
                     </div>
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600">冬季胶囊系列试单 120 件</td>
+                  <td className="py-3.5 px-4 text-slate-600">冬季胶囊系列首批 220 件</td>
                   <td className="py-3.5 px-4">
                     <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-[10px] font-semibold">
                       ● 重点培育
@@ -1746,7 +1746,7 @@ export default function Home() {
               <SidebarTrigger className="-ml-1 rounded-xl text-slate-600 hover:text-slate-900" />
               <div>
                 <h2 className="text-base font-bold text-slate-900 tracking-tight">上午好，KY</h2>
-                <p className="text-[11px] text-slate-400">2026年11月9日 · 星期一 · 东莞总厂运营中 · 全域外贸协同中台</p>
+                <p className="text-[11px] text-slate-400">2026年11月17日 · 星期二 · 东莞总厂运营中 · 全域外贸协同中台</p>
               </div>
             </div>
 

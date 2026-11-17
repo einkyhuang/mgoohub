@@ -164,12 +164,12 @@ export function generateMorningReport(recentJobs: {
   const urgentCount = leads.filter((l) => l.urgency === "high").length;
 
   return {
-    period: "周日夜间 19:00 - 今日 09:00 (11月09日 周一交接)",
-    totalNightMessages: leads.length * 3 + 5,
-    aiHandledCount: leads.length * 3 + 5,
-    averageResponseTimeSec: 4.2,
+    period: "周一夜间 19:00 - 今日 09:00 (11月17日 周二交接)",
+    totalNightMessages: leads.length * 3 + 8,
+    aiHandledCount: leads.length * 3 + 8,
+    averageResponseTimeSec: 3.8,
     capturedLeadsCount: leads.length,
-    qualifiedRate: "91.2%",
+    qualifiedRate: "93.5%",
     urgentLeadsCount: urgentCount,
     leads,
   };
